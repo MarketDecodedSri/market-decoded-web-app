@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swing Trading Course - Learn Rule-Based Trading</title>
+    <meta name="description"
+        content="Learn a simple, rule-based swing trading system built for real people with real jobs. Educational content only - not SEBI registered.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0F172A',
+                        emerald: '#10B981',
+                        gold: '#FACC15',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .sticky-header {
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.95);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-gray-50 text-gray-800">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 sticky-header border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-white font-bold text-xl">
+                <span class="gradient-text">Market Decoded</span>
+            </div>
+            <a href="#pricing" class="bg-gold text-navy px-6 py-3 rounded-lg font-bold uppercase text-sm btn-primary">
+                Enroll Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-navy via-slate-800 to-navy text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+                    <span class="bg-emerald/20 text-emerald px-4 py-2 rounded-full border border-emerald/30">
+                        📚 Educational Content Only
+                    </span>
+                    <span class="bg-red-500/20 text-red-300 px-4 py-2 rounded-full border border-red-500/30">
+                        🚫 Not SEBI Registered | No Tips or Stock Recommendations
+                    </span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    Learn a Simple, Rule-Based<br>
+                    <span class="gradient-text">Swing Trading System</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+                    Built for Real People with Real Jobs
+                </p>
+
+                <p class="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+                    A step-by-step swing trading course focused on <strong class="text-white">process, discipline, and
+                        risk management</strong> — not tips, calls, or guarantees.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#pricing"
+                        class="bg-gold text-navy px-8 py-4 rounded-lg font-bold uppercase text-base btn-primary inline-block">
+                        🔓 Get Instant Access to the Course
+                    </a>
+                    <a href="#course-breakdown"
+                        class="bg-white/10 text-white px-8 py-4 rounded-lg font-semibold border-2 border-white/30 hover:bg-white/20 transition inline-block">
+                        📘 View Course Curriculum
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Agitation Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
+                    Why Most Beginner Traders Stay Stuck for Years
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6 text-left mt-12">
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <p class="text-gray-700 font-medium">❌ Jumping from strategy to strategy</p>
+                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <p class="text-gray-700 font-medium">❌ Entering late, exiting early</p>
+                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <p class="text-gray-700 font-medium">❌ No clear rules → emotional trades</p>
+                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <p class="text-gray-700 font-medium">❌ Learning from random YouTube videos</p>
+                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg md:col-span-2">
+                        <p class="text-gray-700 font-medium">❌ Blowing small accounts repeatedly</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-12 p-8 bg-gradient-to-r from-emerald/10 to-emerald/5 rounded-xl border border-emerald/20">
+                    <p class="text-xl font-semibold text-navy">
+                        This course was created to fix the <span class="text-emerald">process</span>, not chase profits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
+                    This Is NOT a "Tips" Course.
+                </h2>
+                <p class="text-2xl text-center text-emerald font-semibold mb-12">
+                    It's a Framework-Based Learning System.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold text-navy mb-3">What You'll Learn</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2">✓</span>
+                                <span>How to identify high-probability swing setups</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2">✓</span>
+                                <span>How to define risk before reward</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2">✓</span>
+                                <span>How to think in rules, not emotions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2">✓</span>
+                                <span>How to build consistency over time</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-navy text-white p-8 rounded-xl shadow-lg card-hover">
+                        <div class="text-4xl mb-4">⚖️</div>
+                        <h3 class="text-xl font-bold mb-3">Legal-Safe Approach</h3>
+                        <div class="bg-white/10 border border-white/20 rounded-lg p-6">
+                            <p class="text-lg italic">
+                                "You will learn how to <strong>analyze the market</strong> — not what to buy or sell."
+                            </p>
+                        </div>
+                        <p class="mt-4 text-gray-300 text-sm">
+                            This course teaches you the framework and process. All decisions remain yours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Breakdown Section -->
+    <section id="course-breakdown" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
+                    What You'll Learn Inside the Swing Trading Course
+                </h2>
+                <p class="text-center text-gray-600 mb-12 text-lg">
+                    A comprehensive, step-by-step curriculum designed for clarity and practical application
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Module 1 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 1: Market Structure & Trend Context</h3>
+                        <p class="text-gray-700">Understanding market phases, trend identification, and structural
+                            analysis for better decision-making.</p>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 2: Swing Trading Setups (Rule-Based)</h3>
+                        <p class="text-gray-700">Learn specific, repeatable setups with clear entry criteria and
+                            confirmation signals.</p>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 3: Entry Confirmation & Timing</h3>
+                        <p class="text-gray-700">Master the art of timing your entries with multiple confirmation
+                            techniques.</p>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 4: Stop Loss, Risk & Position Sizing</h3>
+                        <p class="text-gray-700">The foundation of sustainable trading - learn to protect capital and
+                            size positions correctly.</p>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 5: Trade Management Logic</h3>
+                        <p class="text-gray-700">How to manage open positions, trail stops, and exit with a plan.</p>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 6: Common Beginner Mistakes</h3>
+                        <p class="text-gray-700">Avoid the pitfalls that keep most traders stuck in the learning phase.
+                        </p>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div
+                        class="bg-gradient-to-r from-emerald/5 to-transparent border-l-4 border-emerald p-6 rounded-r-xl card-hover">
+                        <h3 class="text-xl font-bold text-navy mb-2">Module 7: Real Market Case Studies (Educational)
+                        </h3>
+                        <p class="text-gray-700">Analyze real market examples to understand how the framework applies in
+                            practice.</p>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-12">
+                    <a href="#pricing"
+                        class="bg-gold text-navy px-8 py-4 rounded-lg font-bold uppercase text-base btn-primary inline-block">
+                        🎯 Start Learning the Right Way
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
+                    Is This Course Right for You?
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- This IS for you -->
+                    <div class="bg-emerald/5 border-2 border-emerald/30 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-emerald mb-6 flex items-center">
+                            <span class="text-3xl mr-3">✅</span>
+                            This course IS for you if:
+                        </h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2 mt-1">✓</span>
+                                <span>You want structured learning</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2 mt-1">✓</span>
+                                <span>You prefer rules over predictions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2 mt-1">✓</span>
+                                <span>You're willing to practice patiently</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2 mt-1">✓</span>
+                                <span>You value process over quick wins</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-2 mt-1">✓</span>
+                                <span>You want to build long-term skills</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- This is NOT for you -->
+                    <div class="bg-red-50 border-2 border-red-300 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-red-600 mb-6 flex items-center">
+                            <span class="text-3xl mr-3">❌</span>
+                            This course is NOT for you if:
+                        </h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2 mt-1">✗</span>
+                                <span>You want guaranteed profits</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2 mt-1">✗</span>
+                                <span>You're looking for tips or signals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2 mt-1">✗</span>
+                                <span>You expect overnight success</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2 mt-1">✗</span>
+                                <span>You want someone else to make decisions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2 mt-1">✗</span>
+                                <span>You're seeking get-rich-quick schemes</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-8">
+                    Why Learn From Me?
+                </h2>
+
+                <div class="bg-gradient-to-br from-navy to-slate-800 text-white p-10 rounded-2xl shadow-xl">
+                    <p class="text-lg leading-relaxed mb-6">
+                        I'm a <strong class="text-emerald">market student</strong> who focuses on process-driven swing
+                        trading.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6">
+                        This course is built from <strong class="text-gold">real learning, mistakes, and
+                            refinement</strong> — not shortcuts.
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
+                            <div class="text-3xl mb-2">📚</div>
+                            <p class="font-semibold">Years Learning Markets</p>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
+                            <div class="text-3xl mb-2">🎯</div>
+                            <p class="font-semibold">Discipline Focus</p>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
+                            <div class="text-3xl mb-2">🛡️</div>
+                            <p class="font-semibold">Risk-First Mindset</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-200">
+                    <div class="text-5xl mb-4">💡</div>
+                    <p class="text-xl text-gray-700 italic">
+                        "Students use this course to build <strong class="text-emerald">clarity and discipline</strong>
+                        before risking real capital."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-block bg-red-500 text-white px-6 py-2 rounded-full font-bold mb-6 animate-pulse">
+                    ⚠️ LIMITED ENROLLMENT
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
+                    Enrollment Is Limited<br>
+                    <span class="text-2xl font-normal text-gray-700">(For Quality & Support)</span>
+                </h2>
+
+                <div class="bg-white rounded-xl p-8 shadow-xl border-2 border-red-200">
+                    <p class="text-xl text-gray-700 mb-4">
+                        ⚠️ Current price valid till: <strong class="text-red-600">February 28, 2026</strong>
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        Next batch price will increase.
+                    </p>
+                </div>
+
+                <div class="mt-8">
+                    <a href="#pricing"
+                        class="bg-gold text-navy px-10 py-5 rounded-lg font-bold uppercase text-lg btn-primary inline-block">
+                        🚀 Enroll Before Enrollment Closes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-navy text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                    Get Full Course Access Today
+                </h2>
+                <p class="text-center text-gray-300 mb-12 text-lg">
+                    One-time payment. Lifetime access. No recurring fees.
+                </p>
+
+                <div
+                    class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-2xl p-10 border border-white/20 shadow-2xl">
+                    <!-- Price -->
+                    <div class="text-center mb-8">
+                        <div class="text-gray-400 text-2xl line-through mb-2">₹7,999</div>
+                        <div class="text-6xl font-bold text-gold mb-2">₹3,999</div>
+                        <div class="text-emerald text-xl font-semibold">Limited Time Offer</div>
+                    </div>
+
+                    <!-- What They Get -->
+                    <div class="bg-white/10 rounded-xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-6 text-center">What You Get:</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-gold text-2xl mr-3">✓</span>
+                                <span class="text-lg"><strong>Lifetime access</strong> to all course modules</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold text-2xl mr-3">✓</span>
+                                <span class="text-lg"><strong>Future updates</strong> at no extra cost</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold text-2xl mr-3">✓</span>
+                                <span class="text-lg"><strong>Beginner-friendly structure</strong> with clear
+                                    progression</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold text-2xl mr-3">✓</span>
+                                <span class="text-lg"><strong>Real market case studies</strong> for practical
+                                    learning</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold text-2xl mr-3">✓</span>
+                                <span class="text-lg"><strong>Self-paced learning</strong> - study on your
+                                    schedule</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center">
+                        <a href="checkout.html"
+                            class="bg-gold text-navy px-12 py-5 rounded-lg font-bold uppercase text-xl btn-primary inline-block">
+                            ✅ Yes, I Want Access
+                        </a>
+                        <p class="text-gray-400 text-sm mt-4">Secure payment • Instant access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Disclaimer -->
+    <section class="py-16 bg-gray-100 border-t-4 border-red-500">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-navy mb-6 text-center">⚖️ Legal Disclaimer</h3>
+                <div class="bg-white rounded-xl p-8 shadow-lg border-2 border-red-200">
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>This course is strictly for educational purposes only.</strong>
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        We are <strong>not SEBI registered</strong>. No investment advice, stock recommendations, or
+                        trading calls are provided.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Trading involves market risk. Past performance does not guarantee future results. All trading
+                        decisions are your own responsibility.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <h4 class="font-bold text-white mb-4">About</h4>
+                        <p class="text-sm">Educational swing trading course focused on process and discipline.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Legal</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-emerald transition">Disclaimer</a></li>
+                            <li><a href="#" class="hover:text-emerald transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-emerald transition">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Course</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#course-breakdown" class="hover:text-emerald transition">Curriculum</a></li>
+                            <li><a href="#pricing" class="hover:text-emerald transition">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Contact</h4>
+                        <p class="text-sm">support@marketdecoded.com</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                    <p>© 2026 Market Decoded | Trading Education Platform</p>
+                    <p class="mt-2 text-gray-500">Educational content only • Not SEBI registered</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
